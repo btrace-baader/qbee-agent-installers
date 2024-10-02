@@ -112,7 +112,8 @@ find_package_architecture() {
 # resolve qbee agent version
 resolve_qbee_agent_version() {
   if [[ -z $QBEE_AGENT_VERSION ]]; then
-    QBEE_AGENT_VERSION=$(curl -O -s https://cdn.qbee.io/software/qbee-agent/latest.txt)
+    curl -s -O https://cdn.qbee.io/software/qbee-agent/latest.txt
+	QBEE_AGENT_VERSION=$(cat latest.txt)
     echo "Latest agent version is $QBEE_AGENT_VERSION"
   fi
 
