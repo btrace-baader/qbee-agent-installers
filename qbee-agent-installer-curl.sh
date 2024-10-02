@@ -158,7 +158,7 @@ install_qbee_agent() {
   old_wd=$(pwd)
 
   DOWNLOAD_DIR=$(mktemp -d /tmp/qbee-agent-download.XXXXXXXX)
-  curl -s -o "$DOWNLOAD_DIR" "${URL_BASE}/${QBEE_AGENT_PKG}"
+  curl -s -o "${DOWNLOAD_DIR}/${QBEE_AGENT_PKG}" "${URL_BASE}/${QBEE_AGENT_PKG}"
   #curl -s -o "$DOWNLOAD_DIR" "${URL_BASE}/SHA512SUMS"
 
   cd "$DOWNLOAD_DIR"
