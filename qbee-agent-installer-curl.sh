@@ -113,7 +113,7 @@ find_package_architecture() {
 resolve_qbee_agent_version() {
   if [[ -z $QBEE_AGENT_VERSION ]]; then
     curl -s -O https://cdn.qbee.io/software/qbee-agent/latest.txt
-	QBEE_AGENT_VERSION=$(cat latest.txt)
+    QBEE_AGENT_VERSION=$(cat latest.txt)
     echo "Latest agent version is $QBEE_AGENT_VERSION"
   fi
 
@@ -158,8 +158,8 @@ install_qbee_agent() {
   old_wd=$(pwd)
 
   DOWNLOAD_DIR=$(mktemp -d /tmp/qbee-agent-download.XXXXXXXX)
-  curl -O "$DOWNLOAD_DIR" "${URL_BASE}/${QBEE_AGENT_PKG}"
-  curl -O "$DOWNLOAD_DIR" "${URL_BASE}/SHA512SUMS"
+  curl -s -o "$DOWNLOAD_DIR" "${URL_BASE}/${QBEE_AGENT_PKG}"
+  curl -s -o "$DOWNLOAD_DIR" "${URL_BASE}/SHA512SUMS"
 
   cd "$DOWNLOAD_DIR"
   PACKAGE_SHA512SUM=$(grep "${QBEE_AGENT_PKG}$" SHA512SUMS)
